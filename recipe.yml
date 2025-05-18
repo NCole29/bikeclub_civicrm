@@ -1,0 +1,169 @@
+name: 'Bikeclub CiviCRM configuration'
+description: 'Provides CiviCRM-related modules, configuration, and webforms.'
+type: 'Administration' 
+install:
+  - datetime
+  - options
+  # Contrib.
+  - bikeclub_civicrm
+  - civicrm_entity
+  - civicrm_group_roles
+  - civicrm_member_roles
+  - civicrmtheme
+  - honeypot
+  - role_delegation  
+  - webform
+  - webform_civicrm
+  - webform_options_limit
+  - webform_templates
+  - webform_ui
+  - webform_views
+config:
+  strict: false
+  import:
+    webform: '*'
+    webform_templates: '*'
+  actions:
+    civicrmtheme.settings:
+      simple_config_update:
+        admin_theme: 'claro'
+    civicrm_entity.settings:
+      simple_config_update:
+        filter_format: plain_text
+        enabled_entity_types:
+          civicrm_address: civicrm_address
+          civicrm_contact: civicrm_contact
+          civicrm_email: civicrm_email
+          civicrm_event: civicrm_event
+          civicrm_membership: civicrm_membership          
+          civicrm_membership_type: civicrm_membership_type
+          civicrm_participant: civicrm_participant          
+          civicrm_phone: civicrm_phone
+   # Assign CiviCRM permissions to user roles.        
+    user.role.anonymous:
+      grantPermissions:
+        - 'access all custom data'
+        - 'access CiviMail subscribe/unsubscribe pages'
+        - 'access uploaded files'
+        - 'make online contributions'
+        - 'profile create'
+        - 'profile edit'
+        - 'profile view'
+        - 'register for events'
+        - 'view event info'
+        - 'view event participants'
+    user.role.authenticated:
+      grantPermissions:
+        - 'access all custom data'
+        - 'access CiviMail subscribe/unsubscribe pages'
+        - 'access uploaded files'
+        - 'edit my contact'
+        - 'make online contributions'
+        - 'profile create'
+        - 'profile edit'
+        - 'profile view'
+        - 'register for events'
+        - 'view event info'
+        - 'view event participants'
+    user.role.membership:
+      createIfNotExists:
+        label: 'Membership'      
+      grantPermissions:
+        # Group 1
+        - 'access CiviCRM'
+        - 'access CiviMail'
+        - 'delete in CiviMail'
+        - 'view public CiviMail content'
+        # Group 2
+        - 'access civicrm group role setting'      
+        - 'access CiviReport'
+        - 'access Report Criteria'
+        - 'administer Reports'
+        - 'edit all contacts'
+        - 'edit groups'
+        - 'edit message templates'
+        - 'save Report Criteria'
+        - 'view all contacts'
+        # Group 3 - assigned to membership & site_admin.
+        - 'access CiviContribute'
+        - 'access CiviEvent'
+        - 'access CiviMember'
+        - 'access Contact Dashboard'
+        - 'access deleted contacts'
+        - 'add contact notes'
+        - 'add contacts'
+        - 'administer CiviCRM'
+        - 'administer CiviCRM data'
+        - 'administer dedupe rules'
+        - 'administer Tagsets'
+        - 'delete contacts'
+        - 'delete in CiviContribute'
+        - 'delete in CiviEvent'
+        - 'delete in CiviMember'
+        - 'edit all events'
+        - 'edit contributions'
+        - 'edit event participants'
+        - 'edit inbound email basic information'
+        - 'edit inbound email basic information and content'
+        - 'edit memberships'
+        - 'edit system workflow message templates'
+        - 'edit user-driven message templates'
+        - 'manage event profiles'
+        - 'manage tags'
+        - 'merge duplicate contacts'
+        - 'send SMS'
+        - 'view all activities'
+        - 'view all notes'
+    user.role.site_admin:
+      createIfNotExists:
+        label: 'Site administrator'
+      grantPermissions:
+        # Group 1
+        - 'access CiviCRM'
+        - 'access CiviMail'
+        - 'delete in CiviMail'
+        - 'view public CiviMail content'      
+        # Group 2
+        - 'access civicrm group role setting'
+        - 'access CiviReport'
+        - 'access Report Criteria'
+        - 'administer Reports'
+        - 'edit all contacts'
+        - 'edit groups'
+        - 'edit message templates'
+        - 'save Report Criteria'
+        - 'view all contacts'
+        # Group 3
+        - 'access CiviContribute'
+        - 'access CiviEvent'
+        - 'access CiviMember'
+        - 'access Contact Dashboard'
+        - 'access deleted contacts'
+        - 'add contact notes'
+        - 'add contacts'
+        - 'administer CiviCRM'
+        - 'administer CiviCRM data'
+        - 'administer dedupe rules'
+        - 'administer Tagsets'
+        - 'delete contacts'
+        - 'delete in CiviContribute'
+        - 'delete in CiviEvent'
+        - 'delete in CiviMember'
+        - 'edit all events'
+        - 'edit contributions'
+        - 'edit event participants'
+        - 'edit inbound email basic information'
+        - 'edit inbound email basic information and content'
+        - 'edit memberships'
+        - 'edit system workflow message templates'
+        - 'edit user-driven message templates'
+        - 'manage event profiles'
+        - 'manage tags'
+        - 'merge duplicate contacts'
+        - 'send SMS'
+        - 'view all activities'
+        - 'view all notes'
+        # Group 4 - assigned to site_admin only.
+        - 'administer CiviCRM system'
+        - 'administer payment processors'
+        - 'assign membership role'
