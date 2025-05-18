@@ -6,6 +6,7 @@ install:
   - options
   # Contrib.
   - bikeclub_civicrm
+  - civicrm
   - civicrm_entity
   - civicrm_group_roles
   - civicrm_member_roles
