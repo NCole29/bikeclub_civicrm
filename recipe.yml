@@ -11,7 +11,6 @@ install:
   - civicrm_member_roles
   - civicrmtheme
   - honeypot
-  - role_delegation  
   - webform
   - webform_options_limit
   - webform_templates
@@ -25,7 +24,7 @@ config:
   actions:
     civicrmtheme.settings:
       simple_config_update:
-        admin_theme: 'claro'
+        admin_theme: gin
     civicrm_entity.settings:
       simple_config_update:
         filter_format: plain_text
