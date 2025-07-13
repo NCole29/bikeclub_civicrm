@@ -11,12 +11,5 @@
       "role": "Maintainer"
     }
   ],
-  "require": {
-    "drupal/civicrm_entity": "^4.0@beta",
-    "drupal/civicrm_member_roles": "^1.0@beta",
-    "drupal/csv_serialization": "^4.0",
-    "drupal/honeypot": "^2.0",
-    "drupal/webform_views": "^5.5"
-  },
   "version": "1.0.1"
 }

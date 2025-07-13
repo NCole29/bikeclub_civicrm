@@ -1,48 +1,30 @@
-name: 'Bikeclub CiviCRM configuration'
-description: 'Provides CiviCRM-related modules, configuration, and webforms.'
+name: 'CiviCRM'
+description: 'Install CiviCRM and CiviCRM Entity.'
 type: 'Administration' 
 install:
-  - datetime
-  - options
   # Contrib.
   - civicrm
-  - civicrm_entity
-  - civicrm_group_roles
-  - civicrm_member_roles
   - civicrmtheme
-  - honeypot
-  - webform
-  - webform_options_limit
-  - webform_templates
-  - webform_ui
-  - webform_views
 config:
   strict: false
-  import:
-    webform: '*'
-    webform_templates: '*'
-  actions:
     civicrmtheme.settings:
       simple_config_update:
         admin_theme: gin
-    civicrm_entity.settings:
+    package_manager.settings:
       simple_config_update:
-        filter_format: plain_text
-        enabled_entity_types:
-          civicrm_address: civicrm_address
-          civicrm_contact: civicrm_contact
-          civicrm_email: civicrm_email
-          civicrm_event: civicrm_event
-          civicrm_membership: civicrm_membership          
-          civicrm_membership_type: civicrm_membership_type
-          civicrm_participant: civicrm_participant          
-          civicrm_phone: civicrm_phone
+        executables:
+          composer: null
+          rsync: null
+        additional_trusted_composer_plugins:
+          - civicrm/civicrm-asset-plugin
+          - civicrm/composer-compile-plugin
+          - civicrm/composer-downloads-plugin
+        include_unknown_files_in_project_root: true
    # Assign CiviCRM permissions to user roles.        
     user.role.anonymous:
       grantPermissions:
         - 'access all custom data'
         - 'access CiviMail subscribe/unsubscribe pages'
-        - 'access uploaded files'
         - 'make online contributions'
         - 'profile create'
         - 'profile edit'
@@ -65,7 +47,7 @@ config:
         - 'view event participants'
     user.role.membership:
       createIfNotExists:
-        label: 'Membership'      
+        label: 'Membership Coordinator'
       grantPermissions:
         # Group 1
         - 'access CiviCRM'
