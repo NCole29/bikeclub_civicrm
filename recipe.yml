@@ -2,11 +2,13 @@ name: 'CiviCRM'
 description: 'Install CiviCRM and CiviCRM Entity.'
 type: 'Administration' 
 install:
+  - package_manager
   # Contrib.
   - civicrm
   - civicrmtheme
 config:
   strict: false
+  actions:
     civicrmtheme.settings:
       simple_config_update:
         admin_theme: gin
@@ -145,5 +147,3 @@ config:
         - 'view all notes'
         # Group 4 - assigned to site_admin only.
         - 'administer CiviCRM system'
-        - 'administer payment processors'
-        - 'assign membership role'
