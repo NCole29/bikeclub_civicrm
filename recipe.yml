@@ -1,5 +1,5 @@
-name: 'CiviCRM'
-description: 'Install CiviCRM and CiviCRM Entity.'
+name: 'Bikeclub CiviCRM Install'
+description: 'Install CiviCRM. Be patient, this takes awhile.'
 type: 'Administration' 
 install:
   - package_manager
@@ -9,9 +9,6 @@ install:
 config:
   strict: false
   actions:
-    civicrmtheme.settings:
-      simple_config_update:
-        admin_theme: gin
     package_manager.settings:
       simple_config_update:
         executables:
